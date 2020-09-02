@@ -1,0 +1,14 @@
+<?php if(!empty($_SESSION['user']) && $_SESSION['user']['rank'] == 'admin'): ?>
+ <button class="btn-modifier">Modifier la page</button>
+ <form class="tinymce" action="<?=$name?>.php" method="post">
+   <textarea class='content' name="tinymce" rows="8" cols="80"><?php if(!empty($show)){
+     echo $show['content'];
+   }  ?></textarea>
+   <input type="submit" class="btn btn-primary" value="Valider">
+ </form>
+<?php endif; ?>
+ <div class="content">
+   <?php if(!empty($show)){
+     echo $show['content'];
+   }  ?>
+ </div>

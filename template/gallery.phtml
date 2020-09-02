@@ -1,0 +1,29 @@
+<form class="photo-form" action="gallery.php" method="post">
+  <input type="file" name="photo" accept=".pgn,.jpeg,.jpg">
+  <input type="text" name="title" placeholder="Titre de la photo">
+  <input type="submit" value="Valider">
+</form>
+<?php foreach ($gallery as $e): ?>
+  <img class="photo" src="img/gallery/<?= $e['file']?>" alt="<?= $e['title']?>"></img>
+<?php endforeach; ?>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <?php if($page > 1): ?>
+    <li class="page-item">
+      <a class="page-link" href="gallery.php?page=<?= $page - 1 ?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+  <?php endif;
+    for($i = 1; $i <= $nbrPage; $i++): ?>
+    <li class="page-item"><a class="page-link" href="gallery.php?page=<?= $i ?>"><?= $i ?></a></li>
+  <?php endfor;
+  if($page < $nbrPage):?>
+    <li class="page-item">
+      <a class="page-link" href="gallery.php?page=<?= $page + 1 ?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  <?php endif; ?>
+  </ul>
+</nav>
